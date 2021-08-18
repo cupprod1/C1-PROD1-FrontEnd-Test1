@@ -5,6 +5,9 @@ module.exports = {
         userProfileDropdown: {
             selector: '#dropdownMenuLink'
         },
+        userProfileDropdown2: {
+            selector: '#dropdownMenuLinkHeader'
+        },
         logout: {
             // selector: '[class*="dropdown-menu"] [class*="logout"]'
             selector: '.logout button'
@@ -21,6 +24,10 @@ module.exports = {
             clickUserProfileDropdown: function(){
                 this.api.useCss();
                 actions.click(this,this.elements.userProfileDropdown.selector);
+            },
+            clickUserProfileDropdown2: function(){
+                this.api.useCss();
+                actions.click(this,this.elements.userProfileDropdown2.selector);
             },
             waitForLogoutToAppear: function(){
                 this.api.useCss();
