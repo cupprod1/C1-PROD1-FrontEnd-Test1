@@ -56,6 +56,12 @@ describe('Cambridge One APP', function () {
         studentDashboard.waitForProductAppear();
         studentDashboard.goToClass2();
         studentDashboard.waitForAnalytic();
+        headerPageObj = browser.page['header.page']();
+        headerPageObj.clickUserProfileDropdown();
+        headerPageObj.waitForLogoutToAppear();
+        headerPageObj.clickLogout();
+        browser.pause(5000);
+        nemoLaunchPageObj.waitForLoginButtonToBePresent();
     });   
 
     it('Admin Login and access dashboard', function (browser) {  
@@ -74,21 +80,27 @@ describe('Cambridge One APP', function () {
                 browser.assert.fail('Tabs Count do not match');
             }
         });   
-    });   
-
-    afterEach(function (browser, done) {
-      //  take screenshot on every test completion
-        // screenshots.takeScreenshot(browser);
-        done();
-        //Logout
         headerPageObj = browser.page['header.page']();
-        headerPageObj.clickUserProfileDropdown();
+        headerPageObj.clickUserProfileDropdown2();
         headerPageObj.waitForLogoutToAppear();
         headerPageObj.clickLogout();
         browser.pause(5000);
         nemoLaunchPageObj.waitForLoginButtonToBePresent();
-        done();
-    });
+    });   
+
+    // afterEach(function (browser, done) {
+    //   //  take screenshot on every test completion
+    //     // screenshots.takeScreenshot(browser);
+    //     done();
+    //     //Logout
+    //     headerPageObj = browser.page['header.page']();
+    //     headerPageObj.clickUserProfileDropdown();
+    //     headerPageObj.waitForLogoutToAppear();
+    //     headerPageObj.clickLogout();
+    //     browser.pause(5000);
+    //     nemoLaunchPageObj.waitForLoginButtonToBePresent();
+    //     done();
+    // });
 
     after(function (browser, done) {
         //close browser
