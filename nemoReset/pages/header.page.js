@@ -9,6 +9,9 @@ module.exports = {
         userProfileDropdown2: {
             selector: '#dropdownMenuLinkHeader'
         },
+        userProfileDropdown3: {
+            selector: '#userProfileDropdownMenuLink'
+        },
         logout: {
             // selector: '[class*="dropdown-menu"] [class*="logout"]'
             selector: '.logout button'
@@ -40,6 +43,18 @@ module.exports = {
                 })
                 this.api.useCss();
                 this.api.click(this.elements.userProfileDropdown2.selector, function(result) {
+                    this.assert.equal(result.status, 0, "User Profile dropdown button is not clickable");
+                })
+                this.api.perform(function() {
+                    testlog.info("User Profile dropdown is clicked successfully")
+                })
+            },
+            clickUserProfileDropdown3: function(){
+                this.api.perform(function() {
+                    testlog.info("Clicking User Profile dropdown")
+                })
+                this.api.useCss();
+                this.api.click(this.elements.userProfileDropdown3.selector, function(result) {
                     this.assert.equal(result.status, 0, "User Profile dropdown button is not clickable");
                 })
                 this.api.perform(function() {
