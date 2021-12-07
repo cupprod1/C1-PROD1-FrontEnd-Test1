@@ -155,6 +155,9 @@ module.exports = {
     gobacksele: {
         selector: "[qid='lo-renderer-bck-btn']"
     },
+    logo: {
+        selector: "[qid='cHeader-1']"
+    },
     bignext: {
         selector: ".submitBtn"
     }
@@ -175,8 +178,7 @@ module.exports = {
                   testlog.info("Clicking on Go Back button")
                 })
                 this.api.useCss();
-                
-                this.api.click(this.elements.gobacksele.selector, function(result) {
+                this.api.click(this.elements.logo.selector, function(result) {
                     this.assert.equal(result.status, 0, "Go Back button is not clickable");
                 })
                 this.api.perform(function() {
