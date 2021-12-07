@@ -153,7 +153,7 @@ module.exports = {
         selector: "#content-6 .score-progress canvas"
     },
     gobacksele: {
-        selector: "[qid='cHeader-8']"
+        selector: "[qid='lo-renderer-bck-btn']"
     },
     bignext: {
         selector: ".submitBtn"
