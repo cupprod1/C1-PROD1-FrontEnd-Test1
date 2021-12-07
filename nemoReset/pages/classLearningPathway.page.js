@@ -175,6 +175,7 @@ module.exports = {
                   testlog.info("Clicking on Go Back button")
                 })
                 this.api.useCss();
+                
                 this.api.click(this.elements.gobacksele.selector, function(result) {
                     this.assert.equal(result.status, 0, "Go Back button is not clickable");
                 })
