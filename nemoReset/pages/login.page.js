@@ -1,15 +1,31 @@
 var action = require('../lib/browserAction');
+require("./../lib/logging.js");
 
 var loginCommands = {
 
     waitForPageLoad: function(){
-        action.waitForElementVisible(this,'@username',25000);
+        this.api.perform(function() {
+            testlog.info("Waiting for Login Page to get loaded")
+        })
+        this.api.waitForElementVisible(this.elements.username.selector,25000,"Login Page is not loaded successfully");
+        this.api.perform(function() {
+            testlog.info("Login Page is loaded successfully")
+        })
     },
     login: function(username,password)
     {
-        action.setValue(this,'@username',username);
-        action.setValue(this,'@password',password);
-        action.click(this,'@submitButton');
+        this.api.perform(function() {
+            testlog.info("Entering login details")
+        })
+        this.api.waitForElementVisible(this.elements.username.selector,25000,"Username field is not visible on Login page");
+        this.api.setValue(this.elements.username.selector,username);
+        this.api.setValue(this.elements.password.selector,password);
+        this.api.click(this.elements.submitButton.selector, function(result) {
+            this.assert.equal(result.status, 0, "Login Button is not clickable");
+        })
+        this.api.perform(function() {
+            testlog.info("Login Button is clicked successfully")
+        })
     },
     LoginWithGoogleOption: function() {
         action.waitForElementVisible(this,this.elements.googleOption.selector,50000);

@@ -1,4 +1,5 @@
 var actions = require("./../lib/browserAction.js");
+require("./../lib/logging.js");
 
 module.exports = {
     url: function () {
@@ -29,12 +30,26 @@ module.exports = {
                 actions.click(this,this.elements.getStartedButton.selector)
             },
             waitForLoginButtonToBePresent: function(){
+                this.api.perform(function() {
+                    testlog.info("Waiting for Login button to appear on home page")
+                })
                 this.api.useCss();
-                actions.waitForElementPresent(this,this.elements.logIn.selector,30000);
+                this.api.waitForElementPresent(this.elements.logIn.selector,60000,"Login Button is not visible on home page");
+                this.api.perform(function() {
+                    testlog.info("Login button is visible on home page")
+                })
             },
             clickLogin: function(){
+                this.api.perform(function() {
+                    testlog.info("Clicking Login button on home page")
+                })
                 this.api.useCss();
-                actions.click(this,this.elements.logIn.selector)
+                this.api.click(this.elements.logIn.selector, function(result) {
+                    this.assert.equal(result.status, 0, "Login Button is not clickable on home page");
+                })
+                this.api.perform(function() {
+                    testlog.info("Login button is clicked successfully on home page")
+                })
             }
         }
     ]

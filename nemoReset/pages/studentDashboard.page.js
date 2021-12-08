@@ -52,17 +52,14 @@ module.exports = {
        },
        analytics:{
            selector:".component-analytics .analytic-box"
-       },
-       myProgress: {
-           selector:".image-group .product-image"
-       },
-       collegeName: {
-           selector:".learner-analytics .user-info strong"
        }
  },
     commands: [
         {
             waitForPageLoad: function(){
+              this.api.perform(function() {
+                  testlog.info("Waiting for Login Page to get loaded")
+              })
                 action.waitForElementVisible(this,'@welcome_msg',50000);
             },
             goToClass: function(){
@@ -120,43 +117,57 @@ module.exports = {
                 action.click(this,'@learnbtn');
             },
             waitForProductAppear: function(){
+              this.api.perform(function() {
+                  testlog.info("Waiting for Practice Extra Product to appear on Dashboard Page")
+              })
                 this.api.useCss();
-                action.waitForElementVisible(this,this.elements.cqapracticeextra.selector,50000);
+                this.api.waitForElementVisible(this.elements.cqapracticeextra.selector,50000,"Practice Extra Product is not visible on Dashboard page");
+                this.api.perform(function() {
+                  testlog.info("Practice Extra Product is visible on Dashboard Page")
+              })
             },
             practiceextraopen: function(){
-                action.click(this,'@cqapracticeextra');
+              this.api.perform(function() {
+                  testlog.info("Clicking Practice Extra on Dashboard page")
+              })
+                this.api.click(this.elements.cqapracticeextra.selector, function(result) {
+                    this.assert.equal(result.status, 0, "Practice Extra is not clickable on Dashboard page");
+                })
+                this.api.perform(function() {
+                  testlog.info("Practice Extra is clicked successfully on Dashboard page")
+              })
             },
             waitForFrame: function(){
+              this.api.perform(function() {
+                  testlog.info("Waiting for PSkill to appear on Learning Page")
+              })
                 this.api.useCss();
-                action.waitForElementVisible(this,this.elements.frameselec.selector,50000);         
+                this.api.waitForElementVisible(this.elements.frameselec.selector,50000,"PSkill is not visible on Learning Page");         
+              this.api.perform(function() {
+                  testlog.info("PSkill is visible on Learning Page")
+              })
             },
             goToClass2: function(){
+              this.api.perform(function() {
+                  testlog.info("Clicking on My Progress Tile on Dashboard page")
+              })
                 this.api.useCss();
-                action.click(this,this.elements.class2.selector);                
+                this.api.click(this.elements.class2.selector, function(result) {
+                    this.assert.equal(result.status, 0, "My Progress Tile is not clickable on Dashboard page");
+                })                
+              this.api.perform(function() {
+                  testlog.info("My Progress Tile is clicked successfully on Dashboard page")
+              })
             },
             waitForAnalytic: function(){
+              this.api.perform(function() {
+                  testlog.info("Waiting for Analytics section to appear on Progress Page")
+              })
                 this.api.useCss();
-                action.waitForElementVisible(this,this.elements.analytics.selector,50000);           
-            },
-            opneAnalytics:function(){
-                this.api.useCss();
-                action.click(this,this.elements.analytics.selector);
-            },
-            waitForProgressTile: function(){
-                this.api.useCss();
-                action.waitForElementVisible(this,this.elements.myProgress.selector,50000); 
-            },
-            openMyProgress: function(){
-                this.api.useCss();
-                action.click(this,this.elements.myProgress.selector);
-            },
-            waitForCollegeName: function() {
-                this.api.useCss();
-                action.waitForElementVisible(this,this.elements.collegeName.selector,50000);                
-            },
-            verifyCollegeName: function(cb) {
-                this.api.useCss();
-                action.getElementText(this,this.elements.collegeName.selector,cb);
+                this.api.waitForElementVisible(this.elements.analytics.selector,50000,"Analytics section is not visible on Progress Page");           
+              this.api.perform(function() {
+                  testlog.info("Analytics section is visible on Progress Page")
+              })
             }
         }
 

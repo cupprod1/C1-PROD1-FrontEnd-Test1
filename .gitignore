@@ -1,11 +1,11 @@
 # Node Dependency directory
 node_modules
 
-# Screenshots folder 
-screenshots
-
 # Reports folder
 reports
 
 # .idea folder
 .idea
+
+nemoReset/selenium-debug.log
+package-lock.json

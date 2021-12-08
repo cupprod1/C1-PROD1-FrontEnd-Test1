@@ -19,11 +19,12 @@ module.exports = {
         default : {
             selenium_host : '127.0.0.1',
             selenium_port : 5554,
-            end_session_on_fail: false,
+            end_session_on_fail: true,
             screenshots : {
                 enabled : true,
-                on_failure : false,
-                path : 'screenshots'
+                on_failure : true,
+                on_error : true,
+                path : './screenshots'
             },
             desiredCapabilities : {       // specify browser name along with other capabilities
                 browserName : 'chrome',

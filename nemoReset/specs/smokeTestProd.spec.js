@@ -15,12 +15,17 @@ describe('Cambridge One APP', function () {
         //Create object of nemo launch page
         nemoLaunchPageObj = browser.page['nemoLaunch.page']();
         //Launch nemo url
+        console.log("Launching URL: " + browser.globals.test.launchUrl)
         nemoLaunchPageObj.navigate();
+        browser.perform(function() {
+            testlog.info("URL: " + browser.globals.test.launchUrl + " launched successfully")
+        })
         //Wait for the nemo launch page to appear
         //nemoLaunchPageObj.waitForGetStartedButtonToAppear();
         browser.pause(3000);
         nemoLaunchPageObj.waitForLoginButtonToBePresent();  // changed to match alpha test
         nemoLaunchPageObj.clickLogin();
+        browser.pause(3000);
         //Wait for login button
         //nemoLaunchPageObj.waitForLoginButtonToBePresent();
         //Create object for login page
@@ -55,6 +60,7 @@ describe('Cambridge One APP', function () {
         headerPageObj.clickUserProfileDropdown();
         headerPageObj.waitForLogoutToAppear();
         headerPageObj.clickLogout();
+        browser.pause(5000);
         nemoLaunchPageObj.waitForLoginButtonToBePresent();
     });   
 

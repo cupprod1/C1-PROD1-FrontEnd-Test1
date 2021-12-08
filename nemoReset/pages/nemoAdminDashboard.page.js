@@ -1,4 +1,5 @@
 var actions = require("./../lib/browserAction.js");
+require("./../lib/logging.js");
 var format = require("string-template");
 
 module.exports = {
@@ -10,8 +11,14 @@ module.exports = {
     commands: [
         {
             waitForTabs:function(){
+                this.api.perform(function() {
+                    testlog.info("Waiting for Admin Tabs to be present")
+                })
                 this.api.useCss();
-                actions.waitForElementVisible(this,this.elements.tabsContainer.selector,50000);
+                this.api.waitForElementVisible(this.elements.tabsContainer.selector,50000,"Admin Tabs are not present");
+                this.api.perform(function() {
+                    testlog.info("Admin Tabs are visible")
+                })
             }
         }
     ]

@@ -11,7 +11,7 @@ var formatOut = bformat({
 
 //Create global testlog object.
 global.testlog = bunyan.createLogger({
-    name: 'test-web',
+    name: ' ',
     stream: formatOut,
     level: 'info'
 });
