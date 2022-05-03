@@ -38,7 +38,31 @@ var loginCommands = {
         action.waitForElementVisible(this,this.elements.googlePass.selector,50000);
         action.setValue(this,'@googlePass',pass);
         action.click(this,'@googleNext2');
-    }
+    },
+
+    loginWithFacebookCredentials: function(username,password)
+    {
+        var browserVar = this.api
+        var this2 = this
+        this.api.perform(function() {
+            testlog.info("Entering login details on Facebook page")
+        })
+        this.api.waitForElementVisible(this.elements.facebookEmail.selector,25000,"Facebook Page is not launched");
+        this.api.setValue(this.elements.facebookEmail.selector,username);
+        this.api.setValue(this.elements.facebookPassword.selector,password);
+        this.api.click(this.elements.facebookLogIn.selector, function(result) {
+            this.assert.equal(result.status, 0, "Facebook Log In Button is not clickable");
+        })
+        this.api.useXpath();
+        this.api.waitForElementVisible("//*[contains(text(), 'Welcome to Facebook, Bill')]", 30000, "Facebook Login Failed")
+        this.api.useCss();
+        this.api.url("https://www.cambridgeone.org/login", function() {
+            browserVar.waitForElementVisible(this2.elements.facebook.selector,25000,"Facebook Button is not visible on Login Page");
+            browserVar.click(this2.elements.facebook.selector, function(result) {
+                this.assert.equal(result.status, 0, "Facebook Login Button is not clickable");
+            })
+        })
+    },
 };
 
 module.exports = {
@@ -73,6 +97,18 @@ module.exports = {
         },
         googleNext2: {
             selector: "#passwordNext"
+        },
+        facebook: {
+            selector: "#Facebook_btn"
+        },
+        facebookEmail: {
+            selector: "#email"
+        },
+        facebookPassword: {
+            selector: "#pass"
+        },
+        facebookLogIn: {
+            selector: 'button[name="login"]'
         }
     }
 };

@@ -8,3 +8,4 @@ reports
 .idea
 
 nemoReset/selenium-debug.log
+package-lock.json
