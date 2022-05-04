@@ -102,7 +102,7 @@ module.exports = {
             selector: "#Facebook_btn"
         },
         facebookEmail: {
-            selector: "#email"
+            selector: "#email1"
         },
         facebookPassword: {
             selector: "#pass"
