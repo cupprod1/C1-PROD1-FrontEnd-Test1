@@ -54,7 +54,7 @@ var loginCommands = {
             this.assert.equal(result.status, 0, "Facebook Log In Button is not clickable");
         })
         this.api.useXpath();
-        this.api.waitForElementVisible("//*[contains(text(), 'Welcome to Facebook, Bill')]", 30000, "Facebook Login Failed")
+        this.api.waitForElementVisible("//*[contains(text(), 'Bill')]", 30000, "Facebook Login Failed")
         this.api.useCss();
         this.api.url("https://www.cambridgeone.org/login", function() {
             browserVar.waitForElementVisible(this2.elements.facebook.selector,25000,"Facebook Button is not visible on Login Page");
