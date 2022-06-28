@@ -241,10 +241,8 @@ module.exports = function (grunt) {
 
         if(grunt.option('key')) {
             global.key = grunt.option('key')
-            console.log(key)
         } else {
-            global.key = "thor"
-            console.log(key)
+            global.key = "NA"
         }
     });
 

@@ -64,7 +64,7 @@ describe('Cambridge One APP', function () {
         done();
         //Logout
         headerPageObj = browser.page['header.page']();
-        headerPageObj.clickUserProfileDropdown();
+        headerPageObj.clickUserProfileDropdown2();
         headerPageObj.waitForLogoutToAppear();
         headerPageObj.clickLogout();
         nemoLaunchPageObj.waitForLoginButtonToBePresent();
