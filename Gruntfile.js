@@ -238,6 +238,14 @@ module.exports = function (grunt) {
     grunt.registerTask('test', 'Runs e2e tests', function() {
         var testParam = grunt.option('testParam');
         grunt.task.run('nightwatch:' + testParam)
+
+        if(grunt.option('key')) {
+            global.key = grunt.option('key')
+            console.log(key)
+        } else {
+            global.key = "thor"
+            console.log(key)
+        }
     });
 
 };
