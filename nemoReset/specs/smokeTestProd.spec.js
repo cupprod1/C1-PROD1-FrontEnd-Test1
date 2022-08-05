@@ -75,7 +75,7 @@ describe('Cambridge One APP', function () {
         nemoAdminDashboardPageObj.waitForTabs();
         //count of tabs
         browser.elements('css selector',"li.nav-item",function(result){   //Need to change the selector for teacher/admin
-            if(result.value.length !=4)
+            if(result.value.length !=5)
             {
                 browser.assert.fail('Tabs Count do not match');
             }
