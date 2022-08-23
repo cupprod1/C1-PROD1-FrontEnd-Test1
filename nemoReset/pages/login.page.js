@@ -54,6 +54,11 @@ var loginCommands = {
             this.assert.equal(result.status, 0, "Facebook Log In Button is not clickable");
         })
         this.api.useXpath();
+        this.api.element('xpath', '//*[contains(text(), "Check the login details shown. Was it you?")]', function(result) {
+           if(result.status != -1){
+                browserVar.click('//button[contains(text(), "Yes")]')
+            }
+        });
         this.api.waitForElementVisible("//*[contains(text(), 'Create story')]", 60000, "Facebook Login Failed")
         this.api.useCss();
         this.api.url("https://www.cambridgeone.org/login", function() {
