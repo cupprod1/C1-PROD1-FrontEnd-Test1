@@ -19,7 +19,7 @@ describe('Cambridge One APP - Social Account Login', function () {
 
     it('Verify that the learning path app and class app are working', function(browser) {
         
-        nemoLoginPageObj.loginWithFacebookCredentials('cqatestsocial@gmail.com',"Compro@12345");
+        nemoLoginPageObj.loginWithFacebookCredentials('cqatestsocial2@gmail.com',"Compro@12345");
         studentDashboard = browser.page['studentDashboard.page']();
         studentDashboard.waitForProductAppear();
         studentDashboard.practiceextraopen();

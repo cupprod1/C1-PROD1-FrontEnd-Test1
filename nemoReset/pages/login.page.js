@@ -59,6 +59,7 @@ var loginCommands = {
                 browserVar.click('//button[contains(text(), "Yes")]')
             }
         });
+        this.api.url("https://www.facebook.com/")
         this.api.waitForElementVisible("//*[contains(text(), 'Create story')]", 60000, "Facebook Login Failed")
         this.api.useCss();
         this.api.url("https://www.cambridgeone.org/login", function() {
