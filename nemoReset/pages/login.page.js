@@ -60,7 +60,7 @@ var loginCommands = {
             }
         });
         this.api.url("https://www.facebook.com/")
-        this.api.waitForElementVisible("//*[contains(text(), 'Create story')]", 60000, "Facebook Login Failed")
+        this.api.waitForElementVisible("//*[contains(text(), 'Create story') or contains(text(), 'Create') or contains(text(), 'Bill')]", 60000, "Facebook Login Failed")
         this.api.useCss();
         this.api.url("https://www.cambridgeone.org/login", function() {
             browserVar.waitForElementVisible(this2.elements.facebook.selector,25000,"Facebook Button is not visible on Login Page");
