@@ -105,7 +105,7 @@ module.exports = {
             selector: "#passwordNext"
         },
         facebook: {
-            selector: "#Facebook_btn"
+            selector: "div.app-container button#Facebook_btn"
         },
         facebookEmail: {
             selector: "#email"
