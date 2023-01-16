@@ -26,6 +26,7 @@ describe('Cambridge One APP - Social Account Login', function () {
           })
         .waitForElementVisible("div.app-container button#Facebook_btn",25000,"Facebook Button is not visible on Login Page")
         .click("div.app-container button#Facebook_btn", function(result) {
+            console.log("Clicking Facebook Login Button")
             this.assert.equal(result.status, 0, "Facebook Login Button is not clickable");
         })
         studentDashboard = browser.page['studentDashboard.page']();
