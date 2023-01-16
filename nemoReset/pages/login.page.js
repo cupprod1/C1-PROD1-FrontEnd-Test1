@@ -55,18 +55,13 @@ var loginCommands = {
         })
         this.api.useXpath();
         this.api.element('xpath', '//*[contains(text(), "Check the login details shown. Was it you?")]', function(result) {
+           console.log(result.status)
            if(result.status != -1){
                 browserVar.click('//button[contains(text(), "Yes")]')
             }
         });
         this.api.pause(10000)
         this.api.useCss();
-        this.api.url("https://www.cambridgeone.org/login", function() {
-            browserVar.waitForElementVisible(this2.elements.facebook.selector,25000,"Facebook Button is not visible on Login Page");
-            browserVar.click(this2.elements.facebook.selector, function(result) {
-                this.assert.equal(result.status, 0, "Facebook Login Button is not clickable");
-            })
-        })
     },
 };
 

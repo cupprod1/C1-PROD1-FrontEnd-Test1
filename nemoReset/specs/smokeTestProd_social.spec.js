@@ -20,6 +20,14 @@ describe('Cambridge One APP - Social Account Login', function () {
     it('Verify that the learning path app and class app are working', function(browser) {
         
         nemoLoginPageObj.loginWithFacebookCredentials('cqatestsocial@gmail.com',"Compro@12345678");
+        browser
+          .url("https://www.cambridgeone.org/login", function() {
+            console.log("URL: https://www.cambridgeone.org/login launched successfully")
+          })
+        .waitForElementVisible("div.app-container button#Facebook_btn",25000,"Facebook Button is not visible on Login Page")
+        .click("div.app-container button#Facebook_btn", function(result) {
+            this.assert.equal(result.status, 0, "Facebook Login Button is not clickable");
+        })
         studentDashboard = browser.page['studentDashboard.page']();
         studentDashboard.waitForProductAppear();
         studentDashboard.practiceextraopen();
