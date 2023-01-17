@@ -49,7 +49,9 @@ var loginCommands = {
         })
         this.api.waitForElementVisible(this.elements.facebookEmail.selector,25000,"Facebook Page is not launched");
         this.api.setValue(this.elements.facebookEmail.selector,username);
+        this.api.waitForElementVisible(this.elements.facebookPassword.selector,25000,"Facebook Password is not present");
         this.api.setValue(this.elements.facebookPassword.selector,password);
+        this.api.waitForElementVisible(this.elements.facebookLogIn.selector,25000,"Facebook Login Button is not present");
         this.api.click(this.elements.facebookLogIn.selector, function(result) {
             this.assert.equal(result.status, 0, "Facebook Log In Button is not clickable");
         })
@@ -61,6 +63,7 @@ var loginCommands = {
             }
         });
         this.api.pause(10000)
+        this.api.waitForElementVisible("//*[contains(text(), 'Stories')]",25000,"Facebook Login not successful");
         this.api.useCss();
     },
 };
