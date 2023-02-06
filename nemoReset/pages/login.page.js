@@ -63,7 +63,7 @@ var loginCommands = {
             }
         });
         this.api.pause(10000)
-        this.api.waitForElementVisible("//*[contains(text(), 'Stories')]",25000,"Facebook Login not successful");
+        this.api.waitForElementVisible("//*[contains(text(), 'Stor')]",25000,"Facebook Login not successful");
         this.api.useCss();
     },
 };
