@@ -132,6 +132,28 @@ module.exports = function (grunt) {
                           //  'webdriver.chrome.driver' : 'node_modules/chromedriver/lib/chromedriver/chromedriver.exe'
                           'webdriver.chrome.driver': chromedriver.path
                         }},
+                        smokeTestSocial: {selenium_host : '127.0.0.1',
+                        selenium_port : 5554,
+                        end_session_on_fail: true,
+                        src_folders : ['./nemoReset/specs/smokeTestProd_social.spec.js'], // Update the path based on your application
+                        screenshots : {
+                            enabled : true,
+                            on_failure : true,
+                            on_error : true,
+                            path : './screenshots'
+                        },
+                        desiredCapabilities : {  // specify browser name along with other capabilities
+                            browserName : 'chrome',
+                            javascriptEnabled : true,
+                            acceptSslCerts : true,
+                            'chromeOptions' : {
+                                 //"args" : ['headless']
+                                "args" : ['start-maximized', 'headless', 'no-sandbox', 'disable-dev-shm-usage']                                
+                            }},
+                        cli_args : {
+                          //  'webdriver.chrome.driver' : 'node_modules/chromedriver/lib/chromedriver/chromedriver.exe'
+                          'webdriver.chrome.driver': chromedriver.path
+                        }},
                         smokeTest2: {selenium_host : '127.0.0.1',
                         selenium_port : 5554,
                         end_session_on_fail: false,
@@ -216,6 +238,12 @@ module.exports = function (grunt) {
     grunt.registerTask('test', 'Runs e2e tests', function() {
         var testParam = grunt.option('testParam');
         grunt.task.run('nightwatch:' + testParam)
+
+        if(grunt.option('key')) {
+            global.key = grunt.option('key')
+        } else {
+            global.key = "NA"
+        }
     });
 
 };

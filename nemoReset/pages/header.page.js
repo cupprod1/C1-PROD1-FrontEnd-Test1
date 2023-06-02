@@ -37,6 +37,7 @@ module.exports = {
                     testlog.info("User Profile dropdown is clicked successfully")
                 })
             },
+
             clickUserProfileDropdown2: function(){
                 this.api.perform(function() {
                     testlog.info("Clicking User Profile dropdown")
@@ -61,6 +62,7 @@ module.exports = {
                     testlog.info("User Profile dropdown is clicked successfully")
                 })
             },
+
             waitForLogoutToAppear: function(){
                 this.api.perform(function() {
                     testlog.info("Waiting for Logout button to appear")

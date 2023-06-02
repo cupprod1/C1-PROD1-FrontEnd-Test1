@@ -79,13 +79,16 @@ describe('Cambridge One APP', function () {
             {
                 browser.assert.fail('Tabs Count do not match');
             }
+
         });   
+
         headerPageObj = browser.page['header.page']();
         headerPageObj.clickUserProfileDropdown2();
         headerPageObj.waitForLogoutToAppear();
         headerPageObj.clickLogout();
         browser.pause(5000);
-        nemoLaunchPageObj.waitForLoginButtonToBePresent();
+
+        nemoLaunchPageObj.waitForLoginButtonToBePresent();   
     });   
 
     // afterEach(function (browser, done) {

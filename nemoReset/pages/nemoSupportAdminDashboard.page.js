@@ -1,5 +1,6 @@
 var actions = require("./../lib/browserAction.js");
 var format = require("string-template");
+var CryptoJS = require("crypto-js")
 
 module.exports = {
     elements: {
@@ -33,10 +34,14 @@ module.exports = {
     commands: [
         { 
             waitForOktalogin:function(){
+
+                let password  = CryptoJS.AES.decrypt("U2FsdGVkX19oEsAdKi8sPVT0yADTkLZ2hT8gJCPLMFE=", key);
+                let decryptPassword = password.toString(CryptoJS.enc.Utf8);
+                
                 this.api.useCss();
                 actions.waitForElementVisible(this,this.elements.login_input.selector,50000);
                 actions.setValue(this,this.elements.login_input.selector,'mmehta');
-                actions.setValue(this,this.elements.login_password.selector,'4LSCudaypark#2');
+                actions.setValue(this,this.elements.login_password.selector,decryptPassword);
                 actions.waitForElementVisible(this,this.elements.signin_submit.selector,50000);
                 actions.click(this,this.elements.signin_submit.selector);
                 actions.waitForElementVisible(this,this.elements.s_question.selector,50000);

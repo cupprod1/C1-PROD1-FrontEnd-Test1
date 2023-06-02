@@ -38,7 +38,34 @@ var loginCommands = {
         action.waitForElementVisible(this,this.elements.googlePass.selector,50000);
         action.setValue(this,'@googlePass',pass);
         action.click(this,'@googleNext2');
-    }
+    },
+
+    loginWithFacebookCredentials: function(username,password)
+    {
+        var browserVar = this.api
+        var this2 = this
+        this.api.perform(function() {
+            testlog.info("Entering login details on Facebook page")
+        })
+        this.api.waitForElementVisible(this.elements.facebookEmail.selector,25000,"Facebook Page is not launched");
+        this.api.setValue(this.elements.facebookEmail.selector,username);
+        this.api.waitForElementVisible(this.elements.facebookPassword.selector,25000,"Facebook Password is not present");
+        this.api.setValue(this.elements.facebookPassword.selector,password);
+        this.api.waitForElementVisible(this.elements.facebookLogIn.selector,25000,"Facebook Login Button is not present");
+        this.api.click(this.elements.facebookLogIn.selector, function(result) {
+            this.assert.equal(result.status, 0, "Facebook Log In Button is not clickable");
+        })
+        this.api.useXpath();
+        this.api.element('xpath', '//*[contains(text(), "Check the login details shown. Was it you?")]', function(result) {
+           console.log(result.status)
+           if(result.status != -1){
+                browserVar.click('//button[contains(text(), "Yes")]')
+            }
+        });
+        this.api.pause(10000)
+        this.api.waitForElementVisible("//*[contains(text(), 'Stor')]",25000,"Facebook Login not successful");
+        this.api.useCss();
+    },
 };
 
 module.exports = {
@@ -73,6 +100,18 @@ module.exports = {
         },
         googleNext2: {
             selector: "#passwordNext"
+        },
+        facebook: {
+            selector: "div.app-container button#Facebook_btn"
+        },
+        facebookEmail: {
+            selector: "#email"
+        },
+        facebookPassword: {
+            selector: "#pass"
+        },
+        facebookLogIn: {
+            selector: 'button[name="login"]'
         }
     }
 };
