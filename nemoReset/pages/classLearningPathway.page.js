@@ -154,12 +154,9 @@ module.exports = {
     },
     gobacksele: {
         selector: "[qid='lo-renderer-bck-btn']"
-<<<<<<< HEAD
     },
     logo: {
         selector: "[qid='cHeader-1']"
-=======
->>>>>>> 838fd4c1e32c78ad2cfd21ee1e8affccde01877b
     },
     bignext: {
         selector: ".submitBtn"
