@@ -10,5 +10,6 @@ blocks:
       jobs:
         - name: 'Job #1'
           commands:
+            - ls
             - npm install
             - grunt test --testParam="smokeTest"
