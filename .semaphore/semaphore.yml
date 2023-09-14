@@ -10,6 +10,6 @@ blocks:
       jobs:
         - name: 'Job #1'
           commands:
-            - dir
+            - cd /home/semaphore/C1-PROD1-FrontEnd-Test1
             - npm install
             - grunt test --testParam="smokeTest"
