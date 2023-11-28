@@ -41,7 +41,7 @@ module.exports = {
        cqapracticeextra:{
         // selector:'//*[contains(text(),"Practice Extra")]',
         // locateStrategy: 'xpath'
-        selector:".courses div.tile-group"
+        selector:"div.tile-group"
        },
        frameselec:{
           // selector:'.question-div .text-editor'
